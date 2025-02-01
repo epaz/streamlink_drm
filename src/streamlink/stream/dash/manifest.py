@@ -348,7 +348,7 @@ class MPD(MPDNode):
             default=timedelta(
                 seconds=max(
                     self.DEFAULT_MINBUFFERTIME,
-                    self.minBufferTime.total_seconds(),
+                    self.minBufferTime.total_seconds()*2,
                 ),
             ),
         )
