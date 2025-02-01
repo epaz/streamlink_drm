@@ -225,6 +225,10 @@ class StreamlinkOptions(Options):
           - ``str | None``
           - ``None``
           - Set the output format of muxed streams, e.g. ``"matroska"``
+        * - ffmpeg-dkey
+          - ``str | None``
+          - ``None``
+          - Set the decryption key for the stream
         * - ffmpeg-video-transcode
           - ``str | None``
           - ``None``
@@ -302,6 +306,7 @@ class StreamlinkOptions(Options):
             "ffmpeg-verbose-path": None,
             "ffmpeg-loglevel": None,
             "ffmpeg-fout": None,
+            "ffmpeg-dkey": None,
             "ffmpeg-video-transcode": None,
             "ffmpeg-audio-transcode": None,
             "ffmpeg-copyts": False,
