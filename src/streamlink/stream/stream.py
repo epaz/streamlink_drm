@@ -1,6 +1,11 @@
+from __future__ import annotations
+
 import io
 import json
 import logging
+
+from streamlink.session import Streamlink
+
 
 log = logging.getLogger(__name__)
 
@@ -17,12 +22,12 @@ class Stream:
     def shortname(cls):
         return cls.__shortname__
 
-    def __init__(self, session):
+    def __init__(self, session: Streamlink):
         """
-        :param streamlink.Streamlink session: Streamlink session instance
+        :param session: Streamlink session instance
         """
 
-        self.session = session
+        self.session: Streamlink = session
 
     def __repr__(self):
         params = [repr(self.shortname())]
@@ -34,7 +39,7 @@ class Stream:
 
         return f"<{self.__class__.__name__} [{', '.join(params)}]>"
 
-    def __json__(self):
+    def __json__(self):  # noqa: PLW3201
         return dict(type=self.shortname())
 
     @property
@@ -48,7 +53,7 @@ class Stream:
     def to_manifest_url(self):
         raise TypeError(f"<{self.__class__.__name__} [{self.shortname()}]> cannot be translated to a manifest URL")
 
-    def open(self) -> "StreamIO":
+    def open(self) -> StreamIO:
         """
         Attempts to open a connection to the stream.
         Returns a file-like object that can be used to read the stream data.
