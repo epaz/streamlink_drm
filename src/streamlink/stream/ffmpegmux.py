@@ -208,6 +208,7 @@ class FFMPEGMuxer(StreamIO):
 
         self._cmd.extend(["-c:v", videocodec])
         self._cmd.extend(["-c:a", audiocodec])
+        self._cmd.extend(["-bsf:v", "filter_units=remove_types=6"])
 
         for m in maps:
             self._cmd.extend(["-map", str(m)])
